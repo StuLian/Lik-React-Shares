@@ -1,0 +1,24 @@
+{
+    "tabbardata": [{
+            "title": "首页",
+            "key": "index",
+            "iconUrl": "../../assets/images/home.png",
+            "iconUrlSel": "../../assets/images/home1.png",
+            "path": "/home"
+        },
+        {
+            "title": "行情",
+            "key": "shares",
+            "iconUrl": "../../assets/images/market.png",
+            "iconUrlSel": "../../assets/images/market1.png",
+            "path": "/home/shares"
+        },
+        {
+            "title": "我的",
+            "key": "mine",   
+            "iconUrl": "../../assets/images/mine.png",
+            "iconUrlSel": "../../assets/images/mine1.png",
+            "path": "/home/mine"
+        }
+    ]
+}
