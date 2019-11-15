@@ -21,7 +21,7 @@ function RenderComponent(props) {
 }
 
 function RenderTabbar(props) {
-    var tabBar = tabbardata.map(item => {
+    return tabbardata.map(item => {
         return (
             <TabBar.Item
                 title={item.title}
@@ -36,7 +36,6 @@ function RenderTabbar(props) {
             </TabBar.Item>
         )
     })
-    return tabBar
 }
 
 class Home extends React.Component {
