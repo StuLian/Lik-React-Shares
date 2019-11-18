@@ -63,8 +63,8 @@ class Home extends React.Component {
                 <TabBar.Item
                     title={item.title}
                     key={item.key}
-                    icon={<img src={item.iconUrl} className='icon' />}
-                    selectedIcon={<img src={item.iconUrlSel} className='icon' />}
+                    icon={<img className='icon' src={item.iconUrl} />}
+                    selectedIcon={<img className='icon' src={item.iconUrlSel} />}
                     selected={this.state.selectedTab === item.path}
                     onPress={() => {
                         this.props.history.push(item.path)
