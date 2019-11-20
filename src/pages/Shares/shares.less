@@ -6,6 +6,7 @@
     background-color: #fff;
     height: 100%;
     overflow: hidden;
+
     // padding-top: 1.6rem;
     .title {
         width: 100%;
@@ -19,27 +20,97 @@
         overflow: hidden;
         background: #fff;
         box-sizing: border-box;
+
         div {
             float: left;
+
             &.title1 {
                 width: 30%;
                 text-align: left;
             }
+
             &.title2 {
                 width: 40%;
                 text-align: center;
             }
+
             &.title3 {
                 width: 30%;
                 text-align: right;
             }
         }
     }
+
     .loadMoreWrap {
         overflow-y: scroll;
         height: 100vh;
         padding-bottom: 2.6rem;
         box-sizing: border-box;
         margin-top: 2.8rem;
+    }
+
+    .rankList {
+        padding: 0 0.3rem;
+
+        .listItem {
+            overflow: hidden;
+            width: 100%;
+            border-bottom: 1px solid #eee;
+
+            &>div {
+                float: left;
+                height: 0.8rem;
+                line-height: 0.8rem;
+            }
+
+            .nameBox {
+                width: 30%;
+                text-align: left;
+
+                .name {
+                    line-height: 0.4rem;
+                    padding-top: 0.1rem;
+                    font-size: 0.28rem;
+                }
+
+                .code {
+                    line-height: 0.2rem;
+                    font-size: 0.14rem;
+                    color: #ccc;
+                }
+            }
+
+            .value {
+                width: 40%;
+                text-align: center;
+                font-size: 0.26rem;
+            }
+
+            .chg {
+                width: 30%;
+                text-align: right;
+                font-size: 0.26rem;
+            }
+
+            &.up {
+
+                .value,
+                .chg {
+                    color: #f00;
+                }
+            }
+
+            &.down {
+
+                .value,
+                .chg {
+                    color: #4fa342;
+                }
+            }
+        }
+
+        .listItem:last-child{
+            border-bottom: 1px solid transparent;
+        }
     }
 }

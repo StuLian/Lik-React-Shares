@@ -4,11 +4,65 @@ import { NavBar, SearchBar, Tabs } from "antd-mobile";
 
 class Shares extends React.Component {
     zxList = () => {
-        const list = []
+        const list = Array.from(new Array(5)).map((item,index) => (
+            {
+                changepercent: index,
+                name: '神州泰岳',
+                code: 600604,
+                trade: 11.05
+            }
+        ))
+
+        return (
+            <ul className="rankList">
+                {list.map((item,index) => {
+                    return (
+                        <li
+                            className={item.changepercent > 0 ? 'listItem up' : 'listItem down'}
+                            key={index}
+                        >
+                            <div className="nameBox">
+                                <div className="name">{ item.name }</div>
+                                <div className="code">{ item.code }</div>
+                            </div>
+                            <div className="value">{ item.trade }</div>
+                            <div className="chg">{ item.changepercent }%</div>
+                        </li>
+                    )
+                })}
+            </ul>
+        )
     }
 
     hsList = () => {
+        const list = Array.from(new Array(10    )).map((item,index) => (
+            {
+                changepercent: index,
+                name: '市北高新',
+                code: 600604,
+                trade: 11.05
+            }
+        ))
 
+        return (
+            <ul className="rankList">
+                {list.map((item,index) => {
+                    return (
+                        <li
+                            className={item.changepercent > 0 ? 'listItem up' : 'listItem down'}
+                            key={index}
+                        >
+                            <div className="nameBox">
+                                <div className="name">{ item.name }</div>
+                                <div className="code">{ item.code }</div>
+                            </div>
+                            <div className="value">{ item.trade }</div>
+                            <div className="chg">{ item.changepercent }%</div>
+                        </li>
+                    )
+                })}
+            </ul>
+        )
     }
 
     render() {
@@ -31,6 +85,7 @@ class Shares extends React.Component {
                                 <div className="title2">最新价</div>
                                 <div className="title3">振幅</div>
                             </h1>
+                            {this.zxList()}
                         </div>
                         <div className="sharesList">
                             <h1 className="title">
@@ -38,6 +93,7 @@ class Shares extends React.Component {
                                 <div className="title2">最新价</div>
                                 <div className="title3">振幅</div>
                             </h1>
+                            {this.hsList()}
                         </div>
                     </Tabs>
                 </div>
