@@ -141,12 +141,9 @@ class Index extends React.Component {
                 >首页</NavBar>
                 <SearchBar placeholder="输入代码/名称/拼音" />
                 <img className="picture" src={swiper} />
-                {this.renderTabList()}
+                {/* {this.renderTabList()} */}
                 {this.renderSharesInfo()}
-                <div className="title">
-                    <div className="title-left">资讯</div>
-                    <div className="title-right">更多>></div>
-                </div>
+                <div className="title">资讯</div>
                 {this.renderNewsList()}
             </div>
         )
