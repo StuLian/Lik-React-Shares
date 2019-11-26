@@ -1,6 +1,7 @@
 import React from 'react'
 import './shares.less'
 import { NavBar, SearchBar, Tabs } from "antd-mobile";
+import ShareList from '../Components/shareList.js'
 
 class Shares extends React.Component {
     zxList = () => {
@@ -13,29 +14,11 @@ class Shares extends React.Component {
             }
         ))
 
-        return (
-            <ul className="rankList">
-                {list.map((item,index) => {
-                    return (
-                        <li
-                            className={item.changepercent > 0 ? 'listItem up' : 'listItem down'}
-                            key={index}
-                        >
-                            <div className="nameBox">
-                                <div className="name">{ item.name }</div>
-                                <div className="code">{ item.code }</div>
-                            </div>
-                            <div className="value">{ item.trade }</div>
-                            <div className="chg">{ item.changepercent }%</div>
-                        </li>
-                    )
-                })}
-            </ul>
-        )
+        return ( <ShareList list={list} /> )
     }
 
     hsList = () => {
-        const list = Array.from(new Array(10    )).map((item,index) => (
+        const list = Array.from(new Array(10)).map((item,index) => (
             {
                 changepercent: index,
                 name: '市北高新',
@@ -44,25 +27,7 @@ class Shares extends React.Component {
             }
         ))
 
-        return (
-            <ul className="rankList">
-                {list.map((item,index) => {
-                    return (
-                        <li
-                            className={item.changepercent > 0 ? 'listItem up' : 'listItem down'}
-                            key={index}
-                        >
-                            <div className="nameBox">
-                                <div className="name">{ item.name }</div>
-                                <div className="code">{ item.code }</div>
-                            </div>
-                            <div className="value">{ item.trade }</div>
-                            <div className="chg">{ item.changepercent }%</div>
-                        </li>
-                    )
-                })}
-            </ul>
-        )
+        return ( <ShareList list={list} /> )
     }
 
     render() {
@@ -78,7 +43,7 @@ class Shares extends React.Component {
                 >行情</NavBar>
                 <SearchBar placeholder="输入代码/名称/拼音" />
                 <div>
-                    <Tabs tabs={tabs} initialPage={0} tabBarActiveTextColor="red">
+                    <Tabs tabs={tabs} initialPage={0} tabBarActiveTextColor="red" animated={false}>
                         <div className="sharesList">
                             <h1 className="title">
                                 <div className="title1">名称代码</div>

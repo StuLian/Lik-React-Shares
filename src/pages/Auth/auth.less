@@ -1,0 +1,124 @@
+.borderT {
+    border-top: 1px solid #eee;
+    // border-bottom: 1px solid #eee;
+}
+
+.content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.content ul li {
+    width: 6.9rem;
+    height: 0.88rem;
+    box-sizing: border-box;
+    border-bottom: 0.01rem solid #e0e0e0;
+    margin-left: 0.3rem;
+    position: relative;
+}
+
+.content ul li .sendCode {
+    width: 1.9rem;
+    height: 0.52rem;
+    line-height: 0.52rem;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.26rem;
+    color: red;
+    /* border: 0.5px solid #417dff; */
+    border-radius: 0.26rem;
+}
+
+.content ul li span {
+    display: block;
+    width: 1.4rem;
+    height: 0.88rem;
+    float: left;
+    line-height: 0.88rem;
+    padding-left: 0.25rem;
+    box-sizing: border-box;
+    font-size: 0.28rem;
+    color: #333;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content ul li input {
+    display: block;
+    width: 5.5rem;
+    height: 0.88rem;
+    float: right;
+    line-height: 0.88rem;
+    outline: none;
+    border: none;
+    margin: 0;
+    font-size: 0.28rem;
+    color: #333;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 0.05rem 0.15rem;
+}
+
+.read {
+    color: #333;
+    font-size: 0.28rem;
+    /* margin-left: 0.3rem; */
+    margin-top: .3rem;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 0.9rem;
+}
+
+.read div {
+    position: absolute;
+    top: 60%;
+    left: 0.45rem;
+    transform: translateY(-50%);
+}
+
+.read div input {
+    visibility: hidden;
+    position: absolute;
+}
+
+.read div label {
+    display: inline-block;
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 0.05rem;
+    box-sizing: border-box;
+    border: 1px solid #959595;
+    background: url(../../assets/images/checked.png) no-repeat;
+    background-size: 0.28rem 0.24rem;
+    background-position: -2000px;
+}
+
+.read div input:checked+label {
+    background-position: 0;
+}
+
+.addcolor {
+    color: red;
+}
+
+.addClass {
+    float: right;
+    margin-right: .5rem;
+}
+
+.login {
+    width: 6.94rem;
+    height: 1.1rem;
+    border-radius: 0.1rem;
+    background: #eee;
+    margin-left: 0.28rem;
+    margin-top: 0.3rem;
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #333;
+}
