@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.less'
-import { NavBar, SearchBar } from "antd-mobile";
+import { NavBar, SearchBar } from "antd-mobile"
+import { withRouter } from 'react-router-dom'
 
 import swiper from '../../assets/images/banner.jpg'
 import icon1 from '../../assets/images/ih1.png'
@@ -9,6 +10,10 @@ import icon3 from '../../assets/images/ih3.png'
 import icon4 from '../../assets/images/ih4.png'
 
 class Index extends React.Component {
+    constructor(props){
+        super(props)
+    }
+
     renderTabList = () => {
         const list = [
             {
@@ -137,9 +142,12 @@ class Index extends React.Component {
             <div>
                 <NavBar
                     mode="light"
-                    onLeftClick={() => {}}
                 >首页</NavBar>
-                <SearchBar placeholder="输入代码/名称/拼音" />
+                <SearchBar placeholder="输入代码/名称/拼音" onFocus={
+                    () => {
+                        this.props.history.push('/search')
+                    }
+                } />
                 <img className="picture" src={swiper} />
                 {/* {this.renderTabList()} */}
                 {this.renderSharesInfo()}
@@ -150,4 +158,4 @@ class Index extends React.Component {
     }
 }
 
-export default Index
+export default withRouter(Index)

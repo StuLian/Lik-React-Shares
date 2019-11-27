@@ -1,6 +1,7 @@
 import React from 'react'
 import './shares.less'
-import { NavBar, SearchBar, Tabs } from "antd-mobile";
+import { NavBar, SearchBar, Tabs } from "antd-mobile"
+import { withRouter } from 'react-router-dom'
 import ShareList from '../Components/shareList.js'
 
 class Shares extends React.Component {
@@ -39,9 +40,12 @@ class Shares extends React.Component {
             <div>
                 <NavBar
                     mode="light"
-                    onLeftClick={() => {}}
                 >行情</NavBar>
-                <SearchBar placeholder="输入代码/名称/拼音" />
+                <SearchBar placeholder="输入代码/名称/拼音" onFocus={
+                    () => {
+                        this.props.history.push('/search')
+                    }
+                } />
                 <div>
                     <Tabs tabs={tabs} initialPage={0} tabBarActiveTextColor="red" animated={false}>
                         <div className="sharesList">
@@ -67,4 +71,4 @@ class Shares extends React.Component {
     }
 }
 
-export default Shares
+export default withRouter(Shares)

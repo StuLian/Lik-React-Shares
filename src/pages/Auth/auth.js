@@ -1,6 +1,6 @@
 import React from 'react'
 import './auth.less'
-import { NavBar, Tabs } from "antd-mobile";
+import { NavBar, Tabs } from "antd-mobile"
 
 class Auth extends React.Component {
     constructor(props){
@@ -76,7 +76,6 @@ class Auth extends React.Component {
             <div>
                 <NavBar
                     mode="light"
-                    onLeftClick={() => {}}
                 >授权</NavBar>
                 <div className="borderT">
                     <Tabs tabs={tabs} initialPage={0} tabBarActiveTextColor="red" onChange={tab => {

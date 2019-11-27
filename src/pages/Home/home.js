@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 import './home.css'
-import Index from "../Index/index.js";
-import Shares from "../Shares/shares.js";
-import Mine from "../Mine/mine.js";
-import { TabBar } from "antd-mobile";
+import Index from "../Index/index.js"
+import Shares from "../Shares/shares.js"
+import Mine from "../Mine/mine.js"
+import { TabBar } from "antd-mobile"
 
 import homePng from '../../assets/images/home.png'
 import homePng1 from '../../assets/images/home1.png'

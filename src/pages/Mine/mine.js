@@ -1,6 +1,7 @@
 import React from 'react'
 import './mine.less'
-import { NavBar, Grid } from "antd-mobile";
+import { NavBar, Grid } from "antd-mobile"
+import { withRouter } from 'react-router-dom'
 
 import signPng from '../../assets/images/sign.png'
 import ih1 from '../../assets/images/ih1.png'
@@ -16,30 +17,36 @@ class Mine extends React.Component {
         const data = [
             {
                 icon: im1,
-                text: '资产'
+                text: '资产',
+                path: '/record'
             },
             {
                 icon: im2,
-                text: '买入'
+                text: '买入',
+                path: '/search'
             },
             {
                 icon: im3,
-                text: '卖出'
+                text: '卖出',
+                path: '/search'
             },
             {
                 icon: im4,
-                text: '委托'
+                text: '委托',
+                path: '/record'
             },
             {
                 icon: im5,
-                text: '撤单'
+                text: '撤单',
+                path: '/record'
             },
             {
                 icon: im6,
-                text: '历史'
+                text: '历史',
+                path: '/record'
             }
         ]
-        return (<Grid data={data} columnNum={3} />)
+        return (<Grid data={data} columnNum={3} onClick={ (el) => { this.props.history.push(el.path) } } />)
     }
 
     renderStore = () => {
@@ -96,7 +103,6 @@ class Mine extends React.Component {
             <div>
                 <NavBar
                     mode="light"
-                    onLeftClick={() => {}}
                 >我的</NavBar>
                 <div className="info">
                     <img className="no-class" src={signPng}/>
@@ -120,4 +126,4 @@ class Mine extends React.Component {
     }
 }
 
-export default Mine
+export default withRouter(Mine)

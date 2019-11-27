@@ -1,0 +1,66 @@
+.searchList {
+    padding: 0 0.3rem;
+    background: #fff;
+    margin-top: 0.15rem;
+    position: relative;
+    z-index: 1000;
+
+    .listItem {
+        overflow: hidden;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+
+        &>div {
+            float: left;
+            height: 0.8rem;
+            line-height: 0.8rem;
+        }
+
+        .nameBox {
+            width: 30%;
+            text-align: left;
+            position: relative;
+            z-index: 999;
+
+            .name {
+                line-height: 0.4rem;
+                padding-top: 0.1rem;
+                font-size: 0.28rem;
+            }
+
+            .code {
+                line-height: 0.2rem;
+                font-size: 0.14rem;
+                color: #ccc;
+            }
+        }
+
+        .value {
+            width: 40%;
+            text-align: center;
+            font-size: 0.26rem;
+        }
+
+        .chg {
+            width: 30%;
+            text-align: right;
+            font-size: 0.26rem;
+        }
+
+        &.up {
+
+            .value,
+            .chg {
+                color: #f00;
+            }
+        }
+
+        &.down {
+
+            .value,
+            .chg {
+                color: #4fa342;
+            }
+        }
+    }
+}
