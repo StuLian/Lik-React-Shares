@@ -33,17 +33,17 @@ class Mine extends React.Component {
             {
                 icon: im4,
                 text: '委托',
-                path: '/record'
+                path: '/entrust'
             },
             {
                 icon: im5,
                 text: '撤单',
-                path: '/record'
+                path: '/entrust'
             },
             {
                 icon: im6,
                 text: '历史',
-                path: '/record'
+                path: '/history'
             }
         ]
         return (<Grid data={data} columnNum={3} onClick={ (el) => { this.props.history.push(el.path) } } />)
@@ -105,9 +105,9 @@ class Mine extends React.Component {
                     mode="light"
                 >我的</NavBar>
                 <div className="info">
-                    <img className="no-class" src={signPng}/>
+                    <img className="no-class" src={signPng} onClick={ () => { this.props.history.push('/sign') } }/>
                     <div className="head-img">
-                        <img src={ih1}/>
+                        <img src={ih1} />
                     </div>
                     <div className="username">小肉猪</div>
                     <div className="wallet">我的资产：100元</div>
