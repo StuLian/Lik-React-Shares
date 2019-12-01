@@ -49,16 +49,16 @@ class Shares extends React.Component {
                 <div>
                     <Tabs tabs={tabs} initialPage={0} tabBarActiveTextColor="red" animated={false}>
                         <div className="sharesList">
-                            <h1 className="title">
-                                <div className="title1">名称代码</div>
+                            <h1 className="title-spec">
+                                <div className="titleone">名称代码</div>
                                 <div className="title2">最新价</div>
                                 <div className="title3">振幅</div>
                             </h1>
                             {this.zxList()}
                         </div>
                         <div className="sharesList">
-                            <h1 className="title">
-                                <div className="title1">名称代码</div>
+                            <h1 className="title-spec">
+                                <div className="titleone">名称代码</div>
                                 <div className="title2">最新价</div>
                                 <div className="title3">振幅</div>
                             </h1>
