@@ -6,6 +6,9 @@ import Sign from './pages/Sign/sign.js'
 import Record from './pages/Record/record.js'
 import Entrust from './pages/Entrust/entrust.js'
 import History from './pages/History/history.js'
+import SharesDetail from './pages/SharesDetail/sharesDetail.js'
+import Buy from './pages/Buy/buy.js'
+import Sell from './pages/Sell/sell.js'
 import {  BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
 const apitoken = localStorage.getItem('shares_token')
@@ -34,6 +37,9 @@ function App() {
                     <Route path="/record" component={Record}></Route>
                     <Route path="/entrust" component={Entrust}></Route>
                     <Route path="/history" component={History}></Route>
+                    <Route path="/sharesDetail" component={SharesDetail}></Route>
+                    <Route path="/buy" component={Buy}></Route>
+                    <Route path="/sell" component={Sell}></Route>
                     <IsLogin/>
                 </Switch>
             </div>

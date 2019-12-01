@@ -28,6 +28,7 @@ class Search extends React.Component {
                         <li
                             className="listItem"
                             key={index}
+                            onClick={ () => { this.props.history.push('/sharesDetail') } }
                         >
                             <div className="nameBox">
                                 <div className="name">{item.name}</div>
