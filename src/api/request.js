@@ -1,10 +1,6 @@
-import Vue from 'vue'
 import axios from 'axios'
 import transParam from '../utils/qs'
-import router from '../router/index'
-import {
-	Toast
-} from 'mint-ui';
+import { Toast } from 'antd-mobile'
 
 axios.defaults.timeout = 10000
 axios.defaults.baseURL = 'http://gupiao.dev.huatang168.cn:8091/rest/2.0'
@@ -13,6 +9,7 @@ axios.defaults.baseURL = 'http://gupiao.dev.huatang168.cn:8091/rest/2.0'
 // 请求拦截器
 axios.interceptors.request.use(
 	config => {
+		Toast.loading('', 0);
 		return config
 	},
 	error => {
@@ -23,19 +20,20 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
 	response => {
+		Toast.hide();
 		if (response.status == 200) {
 			if (response.data.error_code) {
 				// 提示 二次
 				// 如果error_code 是 120107 或者 120101 清除token，跳转到登录页 其余弹出错误信息 response.data.error_msg
 				if(response.data.error_code == 120107 || response.data.error_code == 120101){
-					Toast('登录已过期，请重新登录');
+					Toast.info('登录已过期，请重新登录');
 					setTimeout(() => {
 						localStorage.removeItem('shares_token');
-						router.push('/login');
 					},500)
+					window.location.href = '/auth';
 				}else{
-					Toast(response.data.error_msg);
-					return 'error';
+					Toast.info(response.data.error_msg);
+					return false;
 				}
 			} else {
 				return response.data.response_data

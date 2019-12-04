@@ -110,7 +110,7 @@ class Auth extends React.Component {
                     </div>
                     <span>同意</span>
                     <span className="addcolor">《用户协议》</span> 
-                    <span className="addClass">找回密码?</span>
+                    {/* <span className="addClass">找回密码?</span> */}
                 </div>
                 <div className="login">{this.state.authTitle}</div>
             </div>
