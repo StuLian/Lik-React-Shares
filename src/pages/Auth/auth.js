@@ -119,8 +119,10 @@ class Auth extends React.Component {
             return
         }
         let data = await loginApi(this.state.loginData);    
-        window.localStorage.setItem('shares_token',data.access_token);
-        this.props.history.push('/home');
+        if(data){
+            window.localStorage.setItem('shares_token',data.access_token);
+            this.props.history.push('/home');
+        }
     }
 
     async registerLogic(){
@@ -170,8 +172,10 @@ class Auth extends React.Component {
             return;
         }
         let data = await registerApi(this.state.registerData);
-        window.localStorage.setItem('shares_token',data.access_token);
-        this.props.history.push('/home');
+        if(data){
+            window.localStorage.setItem('shares_token',data.access_token);
+            this.props.history.push('/home');
+        }
     }
 
     render(){
