@@ -3,8 +3,7 @@ import transParam from '../utils/qs'
 import { Toast } from 'antd-mobile'
 
 axios.defaults.timeout = 10000
-axios.defaults.baseURL = 'http://gupiao.dev.huatang168.cn:8091/rest/2.0'
-// axios.defaults.baseURL = 'http://api.rrsmb.top/rest/2.0'
+axios.defaults.baseURL = 'http://api.rrsmb.top/rest/2.0'
 
 // 请求拦截器
 axios.interceptors.request.use(
