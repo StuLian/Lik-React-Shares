@@ -7,3 +7,7 @@ export const loginApi = (params) => {
 export const registerApi = (params) => {
     return request('post', '/user/register', params)
 }
+
+export const sendCodeApi = (params) => {
+    request('post', '/user/send_sms', params)
+}

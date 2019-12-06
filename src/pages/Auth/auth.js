@@ -1,7 +1,9 @@
 import React from 'react'
 import './auth.less'
 import { NavBar, Tabs, Toast } from "antd-mobile"
-import { loginApi, registerApi } from './api.js'
+import { loginApi, registerApi, sendCodeApi } from './api.js'
+
+var timer;
 
 class Auth extends React.Component {
     constructor(props){
@@ -10,6 +12,8 @@ class Auth extends React.Component {
             isAgreeText: true,
             authTitle: '登录',
             passwordSure: '', // 确认的密码
+            getCode: '获取验证码',
+            codeFlag: true,
             loginData: {
                 username: '',
                 password: ''
@@ -70,7 +74,7 @@ class Auth extends React.Component {
                 <li>
                     <span className="bg2">验证码</span>
                     <input type="number" name="mobile_verify_code" onChange={(e) => { this.inputChange(e) }} placeholder="请输入手机验证码" />
-                    <div className="sendCode">获取验证码</div>
+                    <div className="sendCode" onClick={ () => { this.sendPhoneCode() } }>{this.state.getCode}</div>
                 </li>
             </ul>
         )
@@ -164,11 +168,11 @@ class Auth extends React.Component {
         let regTel = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
         let regIdentity = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
         if(!regTel.test(this.state.registerData.username)){
-            this.$toast("手机号格式不正确");
+            Toast.info("手机号格式不正确");
             return;
         }
         if (!regIdentity.test(this.state.registerData.id_card)) {
-            this.$toast("请输入合法身份证号码");
+            Toast.info("请输入合法身份证号码");
             return;
         }
         let data = await registerApi(this.state.registerData);
@@ -176,6 +180,49 @@ class Auth extends React.Component {
             window.localStorage.setItem('shares_token',data.access_token);
             this.props.history.push('/home');
         }
+    }
+
+    async sendPhoneCode(){
+        if(!this.state.codeFlag){
+            return
+        }
+        let num = 60;
+        let regTel = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+        if(!this.state.registerData.username){
+            Toast.info('请输入手机号')
+            return
+        }
+        if(!regTel.test(this.state.registerData.username)){
+            Toast.info("手机号格式不正确");
+            return;
+        }
+        let data = await sendCodeApi({
+            action: 'register',
+            mobile: this.state.registerData.username
+        })
+        if(!data){
+            this.setState({
+                codeFlag: false
+            })
+            timer = setInterval(() => {
+                num--
+                this.setState({
+                    getCode: num + 's'
+                })
+                if (num <= 0) {
+                    clearInterval(timer);
+                    num = 60;
+                    this.setState({
+                        getCode: '获取验证码',
+                        codeFlag: true
+                    })
+                }
+            }, 1000);
+        }
+    }
+
+    componentWillUnmount(){
+        clearInterval(timer);
     }
 
     render(){
