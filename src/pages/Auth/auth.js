@@ -200,7 +200,7 @@ class Auth extends React.Component {
             action: 'register',
             mobile: this.state.registerData.username
         })
-        if(!data){
+        if(typeof(data) === 'undefined'){
             this.setState({
                 codeFlag: false
             })
