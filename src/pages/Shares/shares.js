@@ -3,31 +3,51 @@ import './shares.less'
 import { NavBar, SearchBar, Tabs } from "antd-mobile"
 import { withRouter } from 'react-router-dom'
 import ShareList from '../Components/shareList.js'
+import { zxShares, hsShares } from './api.js'
 
 class Shares extends React.Component {
-    zxList = () => {
-        const list = Array.from(new Array(5)).map((item,index) => (
-            {
-                changepercent: index,
-                name: '神州泰岳',
-                code: 600604,
-                trade: 11.05
-            }
-        ))
+    constructor(props){
+        super(props)
+        this.state = {
+            zxSharesList: [],
+            hsSharesList: []
+        }
+    }
 
+    componentDidMount(){
+        this.getZxList()
+        this.getHsList();
+    }
+
+    async getZxList(){
+        let params = {
+            page: 1,
+            num: 10
+        }
+        let data = await zxShares(params);
+        this.setState({
+            zxSharesList: data.lists
+        })
+    }
+
+    async getHsList(){
+        let params = {
+            page: 1,
+            num: 10
+        }
+        let data = await hsShares(params);
+        this.setState({
+            hsSharesList: data.lists
+        })
+    }
+
+    zxList = () => {
+        const list = this.state.zxSharesList;
         return ( <ShareList list={list} /> )
     }
 
     hsList = () => {
-        const list = Array.from(new Array(10)).map((item,index) => (
-            {
-                changepercent: index,
-                name: '市北高新',
-                code: 600604,
-                trade: 11.05
-            }
-        ))
-
+        const list = this.state.hsSharesList;
         return ( <ShareList list={list} /> )
     }
 

@@ -19,7 +19,7 @@ class ShareList extends React.Component {
                                 <div className="code">{ item.code }</div>
                             </div>
                             <div className="value">{ item.trade }</div>
-                            <div className="chg">{ item.changepercent }%</div>
+                            <div className="chg">{ item.changepercent }</div>
                         </li>
                     )
                 })}

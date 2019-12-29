@@ -2,6 +2,7 @@ import React from 'react'
 import './index.less'
 import { NavBar, SearchBar } from "antd-mobile"
 import { withRouter } from 'react-router-dom'
+import { sharesInfo, newsList } from './api.js'
 
 import swiper from '../../assets/images/banner.jpg'
 import icon1 from '../../assets/images/ih1.png'
@@ -9,9 +10,43 @@ import icon2 from '../../assets/images/ih2.png'
 import icon3 from '../../assets/images/ih3.png'
 import icon4 from '../../assets/images/ih4.png'
 
+var timer;
+
 class Index extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            sharesInfoList: [],
+            news: []
+        }
+    }
+
+    componentDidMount(){
+        // timer = setInterval(() => { this.getSharesInfoList() },5000)
+        this.getSharesInfoList()
+        this.getNewsList()
+    }
+
+    componentWillUnmount(){
+        clearInterval(timer);
+    }
+
+    async getSharesInfoList() {
+        let data = await sharesInfo();
+        this.setState({
+            sharesInfoList: data.lists
+        })
+    }
+
+    async getNewsList() {
+        let params = {
+            page: 1,
+            num: 5
+        }
+        let data = await newsList(params);
+        this.setState({
+            news: data.lists
+        })
     }
 
     renderTabList = () => {
@@ -48,32 +83,7 @@ class Index extends React.Component {
     }
 
     renderSharesInfo = () => {
-        const list = [
-            {
-                name: '上证指数',
-                nowpri: 2020.98,
-                increase: 13.87,
-                increPer: -0.44
-            },
-            {
-                name: '深圳成指',
-                nowpri: 2020.98,
-                increase: -13.87,
-                increPer: -0.44
-            },
-            {
-                name: '创业板指',
-                nowpri: 2020.98,
-                increase: 13.87,
-                increPer: -0.44
-            },
-            {
-                name: '中心指数',
-                nowpri: 2020.98,
-                increase: -13.87,
-                increPer: -0.44
-            }
-        ]
+        const list = this.state.sharesInfoList;
         return (
             <div className="data-box">
                 {list.map((item,index) => {
@@ -84,7 +94,7 @@ class Index extends React.Component {
                         >
                             <p className="col-bla">{ item.name }</p>
                             <p className="col-re">{ item.nowpri }</p>
-                            <p className="col-gre">{ item.increase }&emsp;{ item.increPer }%</p>
+                            <p className="col-gre">{ item.increase }&emsp;{ item.increPer }</p>
                         </div>
                     )
                 })}
@@ -93,33 +103,7 @@ class Index extends React.Component {
     }
 
     renderNewsList = () => {
-        const list = [
-            {
-                title: '科创板征求意见今日结束',
-                company: '证券时报网',
-                update_time: '2019-11-17 23:59:59'
-            },
-            {
-                title: '科创板征求意见今日结束',
-                company: '证券时报网',
-                update_time: '2019-11-17 23:59:59'
-            },
-            {
-                title: '科创板征求意见今日结束',
-                company: '证券时报网',
-                update_time: '2019-11-17 23:59:59'
-            },
-            {
-                title: '科创板征求意见今日结束',
-                company: '证券时报网',
-                update_time: '2019-11-17 23:59:59'
-            },
-            {
-                title: '科创板征求意见今日结束',
-                company: '证券时报网',
-                update_time: '2019-11-17 23:59:59'
-            }
-        ]
+        const list = this.state.news;
         return (
             <div className="news">
                 {list.map((item,index) => {
