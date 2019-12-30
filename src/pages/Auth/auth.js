@@ -122,6 +122,10 @@ class Auth extends React.Component {
             Toast.info('请输入密码')
             return
         }
+        if(!this.state.isAgreeText){
+            Toast.info('请阅读服务协议')
+            return
+        }
         let data = await loginApi(this.state.loginData);    
         if(data){
             window.localStorage.setItem('shares_token',data.access_token);

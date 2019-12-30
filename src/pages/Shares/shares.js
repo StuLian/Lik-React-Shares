@@ -25,6 +25,9 @@ class Shares extends React.Component {
             num: 10
         }
         let data = await zxShares(params);
+        data.lists.forEach((item,index) => {
+            item.changepercent = item.changepercent.split('%')[0]
+        })
         this.setState({
             zxSharesList: data.lists
         })
@@ -36,6 +39,9 @@ class Shares extends React.Component {
             num: 10
         }
         let data = await hsShares(params);
+        data.lists.forEach((item,index) => {
+            item.changepercent = item.changepercent.split('%')[0]
+        })
         this.setState({
             hsSharesList: data.lists
         })
@@ -43,12 +49,12 @@ class Shares extends React.Component {
 
     zxList = () => {
         const list = this.state.zxSharesList;
-        return ( <ShareList list={list} /> )
+        return ( <ShareList list={list} history={this.props.history} /> )
     }
 
     hsList = () => {
         const list = this.state.hsSharesList;
-        return ( <ShareList list={list} /> )
+        return ( <ShareList list={list} history={this.props.history} /> )
     }
 
     render() {

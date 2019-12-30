@@ -33,6 +33,9 @@ class Index extends React.Component {
 
     async getSharesInfoList() {
         let data = await sharesInfo();
+        data.lists.forEach((item,index) => {
+            item.increase = item.increase.split('%')[0]
+        })
         this.setState({
             sharesInfoList: data.lists
         })
@@ -94,7 +97,7 @@ class Index extends React.Component {
                         >
                             <p className="col-bla">{ item.name }</p>
                             <p className="col-re">{ item.nowpri }</p>
-                            <p className="col-gre">{ item.increase }&emsp;{ item.increPer }</p>
+                            <p className="col-gre">{ item.increase }%&emsp;{ item.increPer }</p>
                         </div>
                     )
                 })}

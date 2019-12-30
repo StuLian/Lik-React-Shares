@@ -13,13 +13,14 @@ class ShareList extends React.Component {
                         <li
                             className={item.changepercent > 0 ? 'listItem up' : 'listItem down'}
                             key={index}
+                            onClick={ () => { this.props.history.push('/sharesDetail',{code: item.gp_code}) } }
                         >
                             <div className="nameBox">
                                 <div className="name">{ item.name }</div>
                                 <div className="code">{ item.code }</div>
                             </div>
                             <div className="value">{ item.trade }</div>
-                            <div className="chg">{ item.changepercent }</div>
+                            <div className="chg">{ item.changepercent }%</div>
                         </li>
                     )
                 })}
