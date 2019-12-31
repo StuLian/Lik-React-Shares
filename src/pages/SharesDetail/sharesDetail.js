@@ -148,10 +148,10 @@ class SharesDetail extends React.Component {
                         </Tabs>
                     </div>
                     <BuyWhichCount informationData={this.state.informationData}/>
-                    <div className="bottomBox">
+                    {/* <div className="bottomBox">
                         <div className="buy" onClick={ () => {this.props.history.push('/buy')} }>买入</div>
                         <div className="sell" onClick={ () => {this.props.history.push('/sell')} }>卖出</div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
