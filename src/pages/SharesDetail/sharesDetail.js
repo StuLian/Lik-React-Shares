@@ -1,8 +1,8 @@
 import React from 'react'
 import './sharesDetail.less'
-import { NavBar, Icon, Tabs } from "antd-mobile"
+import { NavBar, Icon, Tabs, Toast } from "antd-mobile"
 
-import { sharesInfo } from './api.js'
+import { sharesInfo, addShares, removeShares } from './api.js'
 
 import upPng from '../../assets/images/up.png' 
 import downPng from '../../assets/images/down.png'
@@ -35,6 +35,39 @@ class SharesDetail extends React.Component {
         })
     }
 
+    async addS(){
+        let params = {
+            gp_code: this.props.location.state.code
+        }
+        let data = await addShares(params);
+        return data
+    }
+
+    async removeS(){
+        let params = {
+            gp_code: this.props.location.state.code
+        }
+        let data = await removeShares(params);
+        return data
+    }
+
+    addShares = () => {
+        if(this.state.addZS == 1){ // 点击移出自选股
+            this.removeS()
+            let params = {
+                gp_code: this.props.location.state.code
+            }
+            this.getSharesInfo(params)
+        }
+        if(this.state.addZS == 2){ // 点击加入自选股
+            this.addS()
+            let params = {
+                gp_code: this.props.location.state.code
+            }
+            this.getSharesInfo(params)
+        }
+    }
+
     sharesInfo = () => {
         const informationData = this.state.informationData;
         return (
@@ -44,7 +77,7 @@ class SharesDetail extends React.Component {
                     <img className="UDIcon" src={informationData.increase > 0 ? upPng : downPng}/>
                     <span className="num num1">{ informationData.increase }%</span>
                     <span className="num num2">{ informationData.increPer }%</span>
-                    <span className="choose">{this.state.addZS == 1 ? '移出自选股' : (this.state.addZS == 2 ? '加入自选股' : '')}</span>
+                    <span className="choose" onClick={this.addShares}>{this.state.addZS == 1 ? '移出自选股' : (this.state.addZS == 2 ? '加入自选股' : '')}</span>
                 </h1>
                 <h3 className="subTitle">交易时间:09:30-11:30 13:00-15:00</h3>
                 <ul className="list">
