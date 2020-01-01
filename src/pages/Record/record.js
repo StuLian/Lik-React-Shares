@@ -1,6 +1,7 @@
 import React from 'react'
 import './record.less'
 import { NavBar, Icon } from "antd-mobile"
+import { record } from './api.js'
 
 import icon1 from '../../assets/images/icon3.png'
 import icon2 from '../../assets/images/icon.png'
@@ -8,15 +9,26 @@ import icon3 from '../../assets/images/icon1.png'
 import icon4 from '../../assets/images/icon2.png'
 
 class Record extends React.Component {
-    render() {
-        const info = {
-            profit_and_loss: 0.00,
-            total_money: 0.00,
-            market_money: 0.00,
-            available_money: 0.00,
-            advisable_money: 0.00
+    constructor(props){
+        super(props)
+        this.state = {
+            info: {}
         }
+    }
 
+    componentDidMount(){
+        this.getRecord()
+    }
+
+    async getRecord(){
+        let data = await record();
+        this.setState({
+            info: data
+        })
+    }
+
+    render() {
+        const info = this.state.info;
         return (
             <div>
                 <NavBar
